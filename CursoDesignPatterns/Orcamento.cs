@@ -22,7 +22,6 @@ namespace CursoDesignPatterns
         private void RefreshBudget(double valor)
         {
             Valor += valor;
-
         }
     }
 }
