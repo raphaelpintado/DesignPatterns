@@ -15,7 +15,8 @@ namespace CursoDesignPatterns.Template_Method.BankReports
                     $"Titular: {account.Owner}{Environment.NewLine}" +
                     $"Agência: {account.Agency}{Environment.NewLine}" +
                     $"Número da Conta: {account.NumberAccount}{Environment.NewLine}" +
-                    $"Saldo: R${account.Balance}{Environment.NewLine}"));
+                    $"Saldo: R${account.Balance}{Environment.NewLine} " +
+                    $"Data de Criação: {account.CreatedOn}{Environment.NewLine}"));
 
             Console.WriteLine();
         }

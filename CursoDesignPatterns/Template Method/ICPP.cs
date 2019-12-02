@@ -2,7 +2,16 @@
 {
   public class ICPP : ConditionalTaxTemplate
   {
-    protected override double MaxTaxation(Orcamento orcamento)
+        public ICPP()
+        {
+        }
+
+        public ICPP(IImposto outroImposto) : base(outroImposto)
+        {
+
+        }
+
+        protected override double MaxTaxation(Orcamento orcamento)
     {
       return orcamento.Valor * 0.07;
     }

@@ -58,6 +58,12 @@
     <Compile Include="Chain of Responsibility\Calculador de Descontos\IDesconto.cs" />
     <Compile Include="Chain of Responsibility\Calculador de Descontos\Item.cs" />
     <Compile Include="Chain of Responsibility\Calculador de Descontos\SemDesconto.cs" />
+    <Compile Include="Decorator\CurrentMonthAccounts.cs" />
+    <Compile Include="Decorator\Filter.cs" />
+    <Compile Include="Decorator\HigherBallanceAccounts.cs" />
+    <Compile Include="Decorator\Imposto.cs" />
+    <Compile Include="Decorator\ImpostoAlto.cs" />
+    <Compile Include="Decorator\LowBallanceAccounts.cs" />
     <Compile Include="Strategy\CalculadorDeImposto.cs" />
     <Compile Include="Strategy\ICCC.cs" />
     <Compile Include="Strategy\ICMS.cs" />
@@ -81,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Chain of Responsibility\Uso do padrão.txt" />
+    <Content Include="Decorator\Uso do Padrão.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

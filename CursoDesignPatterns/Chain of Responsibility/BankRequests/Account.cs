@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CursoDesignPatterns.Chain_of_Responsibility.BankRequests
 {
@@ -12,12 +8,20 @@ namespace CursoDesignPatterns.Chain_of_Responsibility.BankRequests
         public string Agency { get; private set; }
         public double NumberAccount { get; private set; }
         public double Balance { get; private set; }
+        public DateTime CreatedOn { get; private set; }
 
         public Account(string owner, string agency, double numberAccount)
         {
             Owner = owner;
             Agency = agency;
             NumberAccount = numberAccount;
+            CreatedOn = DateTime.Now;
+        }
+
+        public Account(string owner, string agency, double numberAccount, DateTime createdOn) 
+            : this(owner, agency, numberAccount)
+        {
+            CreatedOn = createdOn;
         }
 
         public void AddBalance(double balance)

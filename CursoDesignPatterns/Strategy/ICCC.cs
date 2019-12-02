@@ -6,9 +6,17 @@ using System.Threading.Tasks;
 
 namespace CursoDesignPatterns
 {
-  public class ICCC : IImposto
+  public class ICCC : Imposto
   {
-    public double Calcula(Orcamento orcamento)
+        public ICCC()
+        {
+        }
+
+        public ICCC(IImposto outroImposto) : base(outroImposto)
+        {
+        }
+
+        public override double Calcula(Orcamento orcamento)
     {
       if (orcamento.Valor < 1000)
         return orcamento.Valor * 0.05;

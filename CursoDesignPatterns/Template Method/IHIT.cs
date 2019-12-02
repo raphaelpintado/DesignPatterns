@@ -6,6 +6,14 @@ namespace CursoDesignPatterns.Template_Method
 {
     public class IHIT : ConditionalTaxTemplate
     {
+        public IHIT()
+        {
+        }
+
+        public IHIT(IImposto outroImposto) : base(outroImposto)
+        {
+        }
+
         protected override double MaxTaxation(Orcamento orcamento)
         {
             return (orcamento.Valor * 0.13) + 100;
