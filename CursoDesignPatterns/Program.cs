@@ -119,37 +119,73 @@ namespace CursoDesignPatterns
             Console.ReadKey(); */
 
 
-            Account account = new Account("Pintado", "3252-2", 17508, new DateTime(2015, 05, 07));
-            account.AddBalance(50);
+            /* Account account = new Account("Pintado", "3252-2", 17508, new DateTime(2015, 05, 07));
+             account.AddBalance(50);
 
-            IList<Account> accounts = new List<Account>();
-            accounts.Add(account);
+             IList<Account> accounts = new List<Account>();
+             accounts.Add(account);
 
-            account = new Account("Raphael", "1404-5", 52223, new DateTime(2015, 05, 07));
-            account.AddBalance(850000);
+             account = new Account("Raphael", "1404-5", 52223, new DateTime(2015, 05, 07));
+             account.AddBalance(850000);
 
-            accounts.Add(account);
+             accounts.Add(account);
 
-            account = new Account("Teste", "3252-2", 666);
-            account.AddBalance(6500);
+             account = new Account("Teste", "3252-2", 666);
+             account.AddBalance(6500);
 
-            accounts.Add(account);
+             accounts.Add(account);
 
-            var filter = new CurrentMonthAccounts(new LowBallanceAccounts());
+             var filter = new CurrentMonthAccounts(new LowBallanceAccounts());
 
-            var filteredAccounts = filter.Search(accounts);
+             var filteredAccounts = filter.Search(accounts);
 
-            Bank bank = new Bank()
-            {
-                CorporateName = "Banco do Brasil S/A",
-                Phone = "6666-12345",
-                Address = "Av. Borges de Medeiros, Nº123",
-                Email = "banco_do_brasil@BB.com.br",
-                Date = DateTime.Now
-            };
+             Bank bank = new Bank()
+             {
+                 CorporateName = "Banco do Brasil S/A",
+                 Phone = "6666-12345",
+                 Address = "Av. Borges de Medeiros, Nº123",
+                 Email = "banco_do_brasil@BB.com.br",
+                 Date = DateTime.Now
+             };
 
-            IReport report = new ComplexReport();
-            report.Print(filteredAccounts, bank);
+             IReport report = new ComplexReport();
+             report.Print(filteredAccounts, bank);
+             Console.ReadKey(); */
+
+            //STATE PATTERN 
+            /*var orcamento = new Orcamento();
+            orcamento.Add(new Item("Estados do Orçamento", 500));
+
+            Console.WriteLine(orcamento.Valor);
+
+            orcamento.ApplyExtraDiscount();
+            Console.WriteLine(orcamento.Valor);
+
+            orcamento.ApplyExtraDiscount();
+
+            orcamento.Approves();
+
+            orcamento.ApplyExtraDiscount();
+            Console.WriteLine(orcamento.Valor);
+
+            orcamento.Finalized();            
+
+            Console.ReadKey(); */            
+
+            var account = new Account("Pintado", "3252-2", 17508, 5000);
+            account.CashWithDrawal(6000);
+            Console.WriteLine("Saque Realizado!");
+            Console.WriteLine($"Nome:{account.Owner}, Saldo R${account.Balance}");
+
+            account.CashWithDrawal(2000);
+            account.Deposit(2000);
+            Console.WriteLine("Depósito Realizado!");
+            Console.WriteLine($"Nome:{account.Owner}, Saldo R${account.Balance}");
+
+            account.Deposit(2000);
+            Console.WriteLine("Depósito Realizado!");
+            Console.WriteLine($"Nome:{account.Owner}, Saldo R${account.Balance}");
+
             Console.ReadKey();
         }
     }

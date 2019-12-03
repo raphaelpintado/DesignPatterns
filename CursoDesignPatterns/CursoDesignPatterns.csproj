@@ -64,6 +64,12 @@
     <Compile Include="Decorator\Imposto.cs" />
     <Compile Include="Decorator\ImpostoAlto.cs" />
     <Compile Include="Decorator\LowBallanceAccounts.cs" />
+    <Compile Include="State\Approved.cs" />
+    <Compile Include="State\Disapproved.cs" />
+    <Compile Include="State\Finished.cs" />
+    <Compile Include="State\IAccountState.cs" />
+    <Compile Include="State\IBudgetState.cs" />
+    <Compile Include="State\OnApproval.cs" />
     <Compile Include="Strategy\CalculadorDeImposto.cs" />
     <Compile Include="Strategy\ICCC.cs" />
     <Compile Include="Strategy\ICMS.cs" />
@@ -88,6 +94,7 @@
   <ItemGroup>
     <Content Include="Chain of Responsibility\Uso do padrão.txt" />
     <Content Include="Decorator\Uso do Padrão.txt" />
+    <Content Include="State\Uso do Padrão.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
