@@ -1,8 +1,6 @@
-﻿using System;
+﻿using CursoDesignPatterns.Observer;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CursoDesignPatterns.Builder
 {
@@ -15,6 +13,7 @@ namespace CursoDesignPatterns.Builder
         private double TotalValue;
         private double Taxes;
         private IList<InvoiceItem> AllItems = new List<InvoiceItem>();
+        private IList<IInvoiceAction> Actions = new List<IInvoiceAction>();
 
         public InvoiceBuilder()
         {
@@ -54,8 +53,18 @@ namespace CursoDesignPatterns.Builder
         }
 
         public Invoice Build()
-        {            
-            return new Invoice(CorporateName, Cnpj, Date, TotalValue, Taxes, AllItems, Observations);
+        {   
+            var invoice = new Invoice(CorporateName, Cnpj, Date, TotalValue, Taxes, AllItems, Observations);
+
+            Actions.ForEach(x => x.Execute(invoice));
+
+            return invoice;
+        }
+
+        public InvoiceBuilder AddAction(IInvoiceAction action)
+        {
+            this.Actions.Add(action);
+            return this;
         }
     }
 }

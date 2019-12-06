@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CursoDesignPatterns.Builder
 {
@@ -11,7 +8,7 @@ namespace CursoDesignPatterns.Builder
         public string CorporateName { get; set; }
         public string Cnpj { get; set; }
         public DateTime DateTransmit { get; set; }
-        public double GrossValue { get; set; }
+        public double TotalValue { get; set; }
         public double Taxes { get; set; }
         public IList<InvoiceItem> Items { get; set; }
         public string Observations { get; set; }
@@ -20,7 +17,7 @@ namespace CursoDesignPatterns.Builder
             string corporateName, 
             string cnpj, 
             DateTime dateTransmit, 
-            double grossValue, 
+            double totalValue, 
             double taxes, 
             IList<InvoiceItem> items, 
             string observations)
@@ -28,7 +25,7 @@ namespace CursoDesignPatterns.Builder
             CorporateName = corporateName;
             Cnpj = cnpj;
             DateTransmit = dateTransmit;
-            GrossValue = grossValue;
+            TotalValue = totalValue;
             Taxes = taxes;
             Items = items;
             Observations = observations;

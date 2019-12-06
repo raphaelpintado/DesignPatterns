@@ -2,6 +2,7 @@
 using CursoDesignPatterns.Chain_of_Responsibility;
 using CursoDesignPatterns.Chain_of_Responsibility.BankRequests;
 using CursoDesignPatterns.Decorator;
+using CursoDesignPatterns.Observer;
 using CursoDesignPatterns.Template_Method;
 using CursoDesignPatterns.Template_Method.BankReports;
 using System;
@@ -189,6 +190,7 @@ namespace CursoDesignPatterns
 
             Console.ReadKey(); */
 
+            //BUILDER PATTERN
             var builder = new InvoiceBuilder();
             builder.ToCompany("Alura Design Patterns LTDA.")
             .AddCnpj("45.429.459/0001-43")
@@ -197,10 +199,18 @@ namespace CursoDesignPatterns
             //.SetDateTransmit()
             .AddObservation("Add some observation");
 
-            var nf = builder.Build();
+            #region Observer Pattern
+            //builder.AddAction(new EmailSender())
+            //       .AddAction(new InvoiceDAO())
+            //       .AddAction(new SmsSender())
+            //       .AddAction(new Multiplier(5));
 
-            Console.WriteLine(nf.GrossValue);
-            Console.WriteLine(nf.Taxes);
+            #endregion
+
+            var nf = builder.Build();            
+
+            Console.WriteLine($"Valor da Nota: R${nf.TotalValue}");
+            Console.WriteLine($"Taxas: R${nf.Taxes}");
 
             Console.ReadKey();
         }

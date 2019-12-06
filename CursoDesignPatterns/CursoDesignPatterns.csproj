@@ -67,6 +67,12 @@
     <Compile Include="Decorator\Imposto.cs" />
     <Compile Include="Decorator\ImpostoAlto.cs" />
     <Compile Include="Decorator\LowBallanceAccounts.cs" />
+    <Compile Include="Observer\EmailSender.cs" />
+    <Compile Include="Observer\IInvoiceAction.cs" />
+    <Compile Include="Observer\InvoiceDAO.cs" />
+    <Compile Include="Observer\ListExtensions.cs" />
+    <Compile Include="Observer\Multiplier.cs" />
+    <Compile Include="Observer\SmsSender.cs" />
     <Compile Include="State\Approved.cs" />
     <Compile Include="State\Disapproved.cs" />
     <Compile Include="State\Finished.cs" />
@@ -98,6 +104,7 @@
     <Content Include="Builder\Uso do Padrão.txt" />
     <Content Include="Chain of Responsibility\Uso do padrão.txt" />
     <Content Include="Decorator\Uso do Padrão.txt" />
+    <Content Include="Observer\Uso do Padrão.txt" />
     <Content Include="State\Uso do Padrão.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
