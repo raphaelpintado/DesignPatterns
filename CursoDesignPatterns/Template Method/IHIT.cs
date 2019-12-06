@@ -1,4 +1,5 @@
 ﻿using CursoDesignPatterns.Chain_of_Responsibility;
+using CursoDesignPatterns.Strategy;
 using System.Collections.Generic;
 using System.Linq;
 

@@ -79,7 +79,6 @@
     <Compile Include="State\IAccountState.cs" />
     <Compile Include="State\IBudgetState.cs" />
     <Compile Include="State\OnApproval.cs" />
-    <Compile Include="Strategy\CalculadorDeImposto.cs" />
     <Compile Include="Strategy\ICCC.cs" />
     <Compile Include="Strategy\ICMS.cs" />
     <Compile Include="Strategy\IImposto.cs" />
@@ -106,6 +105,7 @@
     <Content Include="Decorator\Uso do Padrão.txt" />
     <Content Include="Observer\Uso do Padrão.txt" />
     <Content Include="State\Uso do Padrão.txt" />
+    <Content Include="Strategy\Uso do Padrão.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

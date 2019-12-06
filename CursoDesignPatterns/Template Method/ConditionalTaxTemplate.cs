@@ -1,4 +1,7 @@
-﻿namespace CursoDesignPatterns.Template_Method
+﻿using CursoDesignPatterns.Decorator;
+using CursoDesignPatterns.Strategy;
+
+namespace CursoDesignPatterns.Template_Method
 {
     public abstract class ConditionalTaxTemplate : Imposto
     {

@@ -1,7 +1,9 @@
-﻿namespace CursoDesignPatterns.Template_Method
+﻿using CursoDesignPatterns.Strategy;
+
+namespace CursoDesignPatterns.Template_Method
 {
-  public class ICPP : ConditionalTaxTemplate
-  {
+    public class ICPP : ConditionalTaxTemplate
+    {
         public ICPP()
         {
         }
@@ -12,18 +14,18 @@
         }
 
         protected override double MaxTaxation(Orcamento orcamento)
-    {
-      return orcamento.Valor * 0.07;
-    }
+        {
+            return orcamento.Valor * 0.07;
+        }
 
-    protected override double MinTaxation(Orcamento orcamento)
-    {
-      return orcamento.Valor * 0.05;
-    }
+        protected override double MinTaxation(Orcamento orcamento)
+        {
+            return orcamento.Valor * 0.05;
+        }
 
-    protected override bool ShouldUseMaxTaxation(Orcamento orcamento)
-    {
-      return orcamento.Valor >= 500;
+        protected override bool ShouldUseMaxTaxation(Orcamento orcamento)
+        {
+            return orcamento.Valor >= 500;
+        }
     }
-  }
 }

@@ -34,9 +34,10 @@ namespace CursoDesignPatterns.Chain_of_Responsibility.BankRequests
             if (Balance > 0)
                 AccountState = new PositiveBalance();
             else AccountState = new NegativeBalance();
-        }
+        }        
 
         public void CashWithDrawal(double value) => AccountState.CashWithdrawal(this, value);
+
         public void Deposit(double value) => AccountState.Deposit(this, value);
 
         internal class PositiveBalance : IAccountState

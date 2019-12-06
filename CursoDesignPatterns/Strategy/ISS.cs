@@ -1,6 +1,6 @@
-﻿using System;
+﻿using CursoDesignPatterns.Decorator;
 
-namespace CursoDesignPatterns
+namespace CursoDesignPatterns.Strategy
 {
     public class ISS : Imposto
     {

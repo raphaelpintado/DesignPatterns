@@ -1,4 +1,6 @@
-﻿namespace CursoDesignPatterns
+﻿using CursoDesignPatterns.Decorator;
+
+namespace CursoDesignPatterns.Strategy
 {
     public class ICMS : Imposto
     {

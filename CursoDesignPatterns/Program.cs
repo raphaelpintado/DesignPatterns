@@ -3,6 +3,7 @@ using CursoDesignPatterns.Chain_of_Responsibility;
 using CursoDesignPatterns.Chain_of_Responsibility.BankRequests;
 using CursoDesignPatterns.Decorator;
 using CursoDesignPatterns.Observer;
+using CursoDesignPatterns.Strategy;
 using CursoDesignPatterns.Template_Method;
 using CursoDesignPatterns.Template_Method.BankReports;
 using System;
@@ -14,19 +15,22 @@ namespace CursoDesignPatterns
     {
         static void Main(string[] args)
         {
-            //STRATEGY
-            /*Orcamento reforma = new Orcamento();
-
-            IImposto novoImposto = new ICCC();
-            Console.WriteLine(novoImposto.Calcula(reforma));      */
-
-            //CHAIN OF RESPONSIBILITY
-
-            /*CalculadorDeDescontos calculador = new CalculadorDeDescontos();
+            #region Strategy
 
             Orcamento orcamento = new Orcamento();
             orcamento.Add(new Item("CANETA", 250.0));
             orcamento.Add(new Item("LAPIS", 250.0));
+
+            IImposto novoImposto = new ICCC();
+            Console.WriteLine(novoImposto.Calcula(orcamento));
+
+            Console.ReadKey();
+
+            #endregion
+
+            #region Chain of Responsibility
+
+            CalculadorDeDescontos calculador = new CalculadorDeDescontos();
 
             double desconto = calculador.Calcula(orcamento);
 
@@ -44,15 +48,17 @@ namespace CursoDesignPatterns
             requests.Add(csvRequest);
             requests.Add(percentRequest);
 
-            var account = new Account("Raphael", 6000.99);
+            var account = new Account("Raphael", "3252-2", 17508, 6000.99);
             var bankRequest = new BankRequester();
 
             requests.ForEach(x => bankRequest.Response(x, account));
-            Console.ReadKey(); */
+            Console.ReadKey();
 
-            //TEMPLATE METHOD
+            #endregion
 
-            /*Orcamento orcamento = new Orcamento();
+            #region Template Method
+
+            orcamento = new Orcamento();
             orcamento.Add(new Item("CANETA", 250.0));
             orcamento.Add(new Item("LAPIS", 250.0));
             orcamento.Add(new Item("APAGADOR", 50.0));
@@ -73,9 +79,9 @@ namespace CursoDesignPatterns
             tax = iHIT.Calcula(orcamento);
             Console.WriteLine($"Valor do IHIT: {tax} ");
 
-            Console.ReadKey(); */
+            Console.ReadKey();
 
-            /*Bank bank = new Bank()
+            Bank bank = new Bank()
             {
                 CorporateName = "Banco do Brasil S/A",
                 Phone = "6666-12345",
@@ -84,15 +90,12 @@ namespace CursoDesignPatterns
                 Date = DateTime.Now
             };
 
-            Account account = new Account("Pintado", "3252-2", 17508.0);
-            account.AddBalance(6000.99);
+            account = new Account("Pintado", "3252-2", 17508, 6000.99);
 
             IList<Account> accounts = new List<Account>();
             accounts.Add(account);
 
-            account = new Account("Raphael", "1404-5", 52223.6);
-            account.AddBalance(8500);
-
+            account = new Account("Raphael", "1404-5", 52223, 8500);
             accounts.Add(account);
 
             Console.WriteLine("Imprimindo relatório simplificado... ");
@@ -105,54 +108,58 @@ namespace CursoDesignPatterns
             report = new ComplexReport();
             report.Print(accounts, bank);
 
-            Console.ReadKey(); */
+            Console.ReadKey();
 
+            #endregion
 
-            //DECORATOR: COMPORTAMENTOS COMPOSTOS 
-            //var iss = new ISS(new ICMS(new IKCV()));
+            #region Decorator e Comportamentos Compostos
 
-            /*var imposto = new ImpostoAlto(new ICPP(new IHIT(new IKCV())));
-            Orcamento orcamento = new Orcamento();
+            var iss = new ISS(new ICMS(new IKCV()));
+            var imposto = new ImpostoAlto(new ICPP(new IHIT(new IKCV())));
+
+            orcamento = new Orcamento();
             orcamento.Add(new Item("CANETA", 250.0));
             orcamento.Add(new Item("LAPIS", 250.0));
 
             double valor = imposto.Calcula(orcamento);
-            Console.WriteLine(valor);
-            Console.ReadKey(); */
+            Console.WriteLine($"Imposto Alto: R${valor}");
+            valor = iss.Calcula(orcamento);
+            Console.WriteLine($"Valor do ISS: R${valor}");
+            Console.ReadKey();
 
+            account = new Account("Pintado", "3252-2", 17508, new DateTime(2015, 05, 07));
+            account.Deposit(50);
 
-            /* Account account = new Account("Pintado", "3252-2", 17508, new DateTime(2015, 05, 07));
-             account.AddBalance(50);
+            accounts = new List<Account>();
+            accounts.Add(account);
 
-             IList<Account> accounts = new List<Account>();
-             accounts.Add(account);
+            account = new Account("Raphael", "1404-5", 52223, new DateTime(2015, 05, 07));
+            account.Deposit(850000);
 
-             account = new Account("Raphael", "1404-5", 52223, new DateTime(2015, 05, 07));
-             account.AddBalance(850000);
+            accounts.Add(account);
 
-             accounts.Add(account);
+            account = new Account("Teste", "3252-2", 666, 6500);
 
-             account = new Account("Teste", "3252-2", 666);
-             account.AddBalance(6500);
+            accounts.Add(account);
 
-             accounts.Add(account);
+            var filter = new CurrentMonthAccounts(new LowBallanceAccounts());
 
-             var filter = new CurrentMonthAccounts(new LowBallanceAccounts());
+            var filteredAccounts = filter.Search(accounts);
 
-             var filteredAccounts = filter.Search(accounts);
+            bank = new Bank()
+            {
+                CorporateName = "Banco do Brasil S/A",
+                Phone = "6666-12345",
+                Address = "Av. Borges de Medeiros, Nº123",
+                Email = "banco_do_brasil@BB.com.br",
+                Date = DateTime.Now
+            };
 
-             Bank bank = new Bank()
-             {
-                 CorporateName = "Banco do Brasil S/A",
-                 Phone = "6666-12345",
-                 Address = "Av. Borges de Medeiros, Nº123",
-                 Email = "banco_do_brasil@BB.com.br",
-                 Date = DateTime.Now
-             };
+            report = new ComplexReport();
+            report.Print(filteredAccounts, bank);
+            Console.ReadKey();
 
-             IReport report = new ComplexReport();
-             report.Print(filteredAccounts, bank);
-             Console.ReadKey(); */
+            #endregion
 
             //STATE PATTERN 
             /*var orcamento = new Orcamento();
@@ -190,29 +197,31 @@ namespace CursoDesignPatterns
 
             Console.ReadKey(); */
 
-            //BUILDER PATTERN
+            #region Builder
+
             var builder = new InvoiceBuilder();
             builder.ToCompany("Alura Design Patterns LTDA.")
             .AddCnpj("45.429.459/0001-43")
             .Add(new InvoiceItem("Item 1", 100.0))
             .Add(new InvoiceItem("Item 2", 200.0))
-            //.SetDateTransmit()
             .AddObservation("Add some observation");
 
             #region Observer Pattern
-            //builder.AddAction(new EmailSender())
-            //       .AddAction(new InvoiceDAO())
-            //       .AddAction(new SmsSender())
-            //       .AddAction(new Multiplier(5));
+            builder.AddAction(new EmailSender())
+                   .AddAction(new InvoiceDAO())
+                   .AddAction(new SmsSender())
+                   .AddAction(new Multiplier(5));
 
             #endregion
 
-            var nf = builder.Build();            
+            var nf = builder.Build();
 
             Console.WriteLine($"Valor da Nota: R${nf.TotalValue}");
             Console.WriteLine($"Taxas: R${nf.Taxes}");
 
             Console.ReadKey();
+
+            #endregion
         }
     }
 }

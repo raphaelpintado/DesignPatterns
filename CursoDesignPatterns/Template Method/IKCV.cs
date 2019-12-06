@@ -1,4 +1,6 @@
-﻿namespace CursoDesignPatterns.Template_Method
+﻿using CursoDesignPatterns.Strategy;
+
+namespace CursoDesignPatterns.Template_Method
 {
     public class IKCV : ConditionalTaxTemplate
     {

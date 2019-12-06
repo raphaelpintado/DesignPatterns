@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CursoDesignPatterns
+﻿namespace CursoDesignPatterns.Strategy
 {
-  public interface IImposto
-  {
-    double Calcula(Orcamento orcamento);
-  }
+    public interface IImposto
+    {
+        double Calcula(Orcamento orcamento);
+    }
 }
