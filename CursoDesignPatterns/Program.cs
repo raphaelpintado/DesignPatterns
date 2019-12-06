@@ -1,4 +1,5 @@
-﻿using CursoDesignPatterns.Chain_of_Responsibility;
+﻿using CursoDesignPatterns.Builder;
+using CursoDesignPatterns.Chain_of_Responsibility;
 using CursoDesignPatterns.Chain_of_Responsibility.BankRequests;
 using CursoDesignPatterns.Decorator;
 using CursoDesignPatterns.Template_Method;
@@ -170,9 +171,9 @@ namespace CursoDesignPatterns
 
             orcamento.Finalized();            
 
-            Console.ReadKey(); */            
+            Console.ReadKey(); */
 
-            var account = new Account("Pintado", "3252-2", 17508, 5000);
+            /*var account = new Account("Pintado", "3252-2", 17508, 5000);
             account.CashWithDrawal(6000);
             Console.WriteLine("Saque Realizado!");
             Console.WriteLine($"Nome:{account.Owner}, Saldo R${account.Balance}");
@@ -185,6 +186,21 @@ namespace CursoDesignPatterns
             account.Deposit(2000);
             Console.WriteLine("Depósito Realizado!");
             Console.WriteLine($"Nome:{account.Owner}, Saldo R${account.Balance}");
+
+            Console.ReadKey(); */
+
+            var builder = new InvoiceBuilder();
+            builder.ToCompany("Alura Design Patterns LTDA.")
+            .AddCnpj("45.429.459/0001-43")
+            .Add(new InvoiceItem("Item 1", 100.0))
+            .Add(new InvoiceItem("Item 2", 200.0))
+            //.SetDateTransmit()
+            .AddObservation("Add some observation");
+
+            var nf = builder.Build();
+
+            Console.WriteLine(nf.GrossValue);
+            Console.WriteLine(nf.Taxes);
 
             Console.ReadKey();
         }

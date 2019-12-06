@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\Invoice.cs" />
+    <Compile Include="Builder\InvoiceBuilder.cs" />
+    <Compile Include="Builder\InvoiceItem.cs" />
     <Compile Include="Chain of Responsibility\BankRequests\Account.cs" />
     <Compile Include="Chain of Responsibility\BankRequests\BankRequester.cs" />
     <Compile Include="Chain of Responsibility\BankRequests\CSVResponse.cs" />
@@ -92,6 +95,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Builder\Uso do Padrão.txt" />
     <Content Include="Chain of Responsibility\Uso do padrão.txt" />
     <Content Include="Decorator\Uso do Padrão.txt" />
     <Content Include="State\Uso do Padrão.txt" />
