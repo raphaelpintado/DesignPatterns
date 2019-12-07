@@ -8,7 +8,7 @@ namespace CursoDesignPatterns.State
 {
     public class Finished : IBudgetState
     {
-        public void ApplyExtraDiscount(Orcamento orcamento)
+        public double ApplyExtraDiscount(Orcamento orcamento)
         {
             throw new Exception("Orçamentos finalizados não recebem desconto extra!");
         }

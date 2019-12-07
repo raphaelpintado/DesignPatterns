@@ -8,8 +8,8 @@ namespace CursoDesignPatterns
     {
         public double Valor { get; set; }
         public IList<Item> Itens { get; private set; }
-
         public IBudgetState BudgetState { get; set; }
+        public double Desconto { get; private set; }
 
         public Orcamento()
         {
@@ -30,7 +30,7 @@ namespace CursoDesignPatterns
 
         public void ApplyExtraDiscount()
         {
-            BudgetState.ApplyExtraDiscount(this);
+            Desconto = BudgetState.ApplyExtraDiscount(this);
         }
 
         public void Approves() => BudgetState.Approves(this);

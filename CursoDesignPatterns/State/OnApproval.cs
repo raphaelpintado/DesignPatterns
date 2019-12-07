@@ -10,17 +10,20 @@ namespace CursoDesignPatterns.State
     {
         private bool DiscountApplied = false;
 
-        public void ApplyExtraDiscount(Orcamento orcamento)
+        public double ApplyExtraDiscount(Orcamento orcamento)
         {
             if (!DiscountApplied)
-            {
-                orcamento.Valor = orcamento.Valor - (orcamento.Valor * 0.05);
+            {                
                 DiscountApplied = true;
+
+                var discount = orcamento.Valor * 0.05;
+                orcamento.Valor = orcamento.Valor - discount;
+
+                return discount;
             }
             else
                 throw new Exception("Desconto extra para orçamento 'Em Aprovação' já aplicado!");
         }
-
 
         public void Approves(Orcamento orcamento)
         {

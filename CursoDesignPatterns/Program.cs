@@ -161,27 +161,31 @@ namespace CursoDesignPatterns
 
             #endregion
 
-            //STATE PATTERN 
-            /*var orcamento = new Orcamento();
+            #region State
+
+            orcamento = new Orcamento();
             orcamento.Add(new Item("Estados do Orçamento", 500));
 
-            Console.WriteLine(orcamento.Valor);
+            Console.WriteLine($"Valor do Orçamento: R${orcamento.Valor}");
 
             orcamento.ApplyExtraDiscount();
-            Console.WriteLine(orcamento.Valor);
+            Console.WriteLine($"Orçamento em aprovação... Desconto extra de R${orcamento.Desconto}");
 
-            orcamento.ApplyExtraDiscount();
+            //orcamento.ApplyExtraDiscount(); teste para não aplicar desconto novamente no estado "Em aprovação"
 
             orcamento.Approves();
+            Console.WriteLine("Orçamento aprovado!");
 
             orcamento.ApplyExtraDiscount();
-            Console.WriteLine(orcamento.Valor);
+            Console.WriteLine($"Desconto extra de R${orcamento.Desconto}");
 
-            orcamento.Finalized();            
+            orcamento.Finalized();
+            Console.WriteLine("Orçamento finalizado!");
+            Console.WriteLine($"Orçamento final de R${orcamento.Valor}");
 
-            Console.ReadKey(); */
+            Console.ReadKey();
 
-            /*var account = new Account("Pintado", "3252-2", 17508, 5000);
+            account = new Account("Pintado", "3252-2", 17508, 5000);
             account.CashWithDrawal(6000);
             Console.WriteLine("Saque Realizado!");
             Console.WriteLine($"Nome:{account.Owner}, Saldo R${account.Balance}");
@@ -195,7 +199,9 @@ namespace CursoDesignPatterns
             Console.WriteLine("Depósito Realizado!");
             Console.WriteLine($"Nome:{account.Owner}, Saldo R${account.Balance}");
 
-            Console.ReadKey(); */
+            Console.ReadKey();
+
+            #endregion
 
             #region Builder
 
@@ -207,17 +213,23 @@ namespace CursoDesignPatterns
             .AddObservation("Add some observation");
 
             #region Observer Pattern
+            Console.WriteLine();
+            Console.WriteLine("Executando ações de Observer pattern...");
             builder.AddAction(new EmailSender())
                    .AddAction(new InvoiceDAO())
                    .AddAction(new SmsSender())
                    .AddAction(new Multiplier(5));
-
+            Console.WriteLine();
             #endregion
 
             var nf = builder.Build();
 
+            Console.WriteLine();
+            Console.WriteLine($"Empresa: {nf.CorporateName}");
+            Console.WriteLine($"CNPJ {nf.Cnpj}");
             Console.WriteLine($"Valor da Nota: R${nf.TotalValue}");
             Console.WriteLine($"Taxas: R${nf.Taxes}");
+            Console.WriteLine($"Observações: {nf.Observations}");
 
             Console.ReadKey();
 

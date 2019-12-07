@@ -18,6 +18,10 @@ namespace CursoDesignPatterns.Chain_of_Responsibility.BankRequests
             Agency = agency;
             NumberAccount = numberAccount;
             CreatedOn = DateTime.Now;
+
+            if (Balance >= 0)
+                AccountState = new PositiveBalance();
+            else AccountState = new NegativeBalance();
         }
 
         public Account(string owner, string agency, double numberAccount, DateTime createdOn) 
@@ -29,11 +33,7 @@ namespace CursoDesignPatterns.Chain_of_Responsibility.BankRequests
         public Account(string owner, string agency, double numberAccount, double balance)
             : this(owner, agency, numberAccount)
         {
-            Balance = balance;
-            CreatedOn = DateTime.Now;
-            if (Balance > 0)
-                AccountState = new PositiveBalance();
-            else AccountState = new NegativeBalance();
+            Balance = balance;            
         }        
 
         public void CashWithDrawal(double value) => AccountState.CashWithdrawal(this, value);

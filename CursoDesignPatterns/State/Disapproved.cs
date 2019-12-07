@@ -8,7 +8,7 @@ namespace CursoDesignPatterns.State
 {
     public class Disapproved : IBudgetState
     {
-        public void ApplyExtraDiscount(Orcamento orcamento)
+        public double ApplyExtraDiscount(Orcamento orcamento)
         {
             throw new Exception("Orçamentos reprovados não recebem desconto extra!");
         }

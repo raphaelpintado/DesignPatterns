@@ -8,7 +8,7 @@ namespace CursoDesignPatterns.State
 {
     public interface IBudgetState
     {
-        void ApplyExtraDiscount(Orcamento orcamento);
+        double ApplyExtraDiscount(Orcamento orcamento);
 
         void Approves(Orcamento orcamento);
         void Disapprove(Orcamento orcamento);
